@@ -25,6 +25,8 @@ class ParserService
     end
   end
 
+  private
+
   def pilot_data(line)
     infos = RGX_PILOT.match(line)
     {

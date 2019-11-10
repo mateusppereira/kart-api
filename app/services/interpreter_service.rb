@@ -16,6 +16,8 @@ class InterpreterService
     }
   end
 
+  private
+
   def reports_by_pilot(pilot_cods)
     pilot_cods.map {|cod| PilotReport.new(@race_by_pilot[cod]) }
   end
@@ -24,7 +26,7 @@ class InterpreterService
     other_pilots.map do |pilot|
       {
         **pilot.to_h,
-        distance_from_winner: pilot.distance_from_winner(winner)
+        distance_from_winner: pilot.calculate_distance_from_winner(winner)
       }
     end
   end

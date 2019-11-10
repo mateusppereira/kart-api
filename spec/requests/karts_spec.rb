@@ -18,6 +18,14 @@ RSpec.describe 'Kart', type: :request do
       it 'should return success' do
         expect(response).to have_http_status(:success)
       end
+
+      it 'should return 5 ordered_pilots' do
+        expect(JSON.parse(response.body)['ordered_pilots'].count).to eq(5)
+      end
+
+      it 'should return best_lap' do
+        expect(JSON.parse(response.body)['best_lap']).to eq(62.852)
+      end
     end
   end
 end

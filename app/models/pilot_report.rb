@@ -26,7 +26,7 @@ class PilotReport
     }
   end
 
-  def distance_from_winner(winner)
+  def calculate_distance_from_winner(winner)
     Float(winner.race_time - @race_time).round(2)
   end
 end
