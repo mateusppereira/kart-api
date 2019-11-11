@@ -4,8 +4,6 @@ stages:
 
 rubocop:
   image: ruby:2.6.2-alpine
-  tags:
-    - m5
   script:
     - gem install bundler
     - bundle install
