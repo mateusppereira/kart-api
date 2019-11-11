@@ -6,7 +6,6 @@ rubocop:
   image: ruby:2.6.2-alpine
   tags:
     - m5
-  <<: *build_test-integration
   script:
     - gem install bundler
     - bundle install
