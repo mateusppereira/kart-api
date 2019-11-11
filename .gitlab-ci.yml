@@ -8,14 +8,14 @@ stages:
     - bundle install
 
 rubocop:
-  image: ruby:2.6
+  image: ruby:2.6.5
   <<: *build_test-integration
   script:
     - bundle exec rubocop
   stage: lint
 
 rspec:
-  image: ruby:2.6
+  image: ruby:2.6.5
   <<: *build_test-integration
   script:
     - bundle exec rubocop
