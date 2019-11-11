@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Kart', type: :request do
@@ -11,7 +13,7 @@ RSpec.describe 'Kart', type: :request do
     end
 
     context 'File sent' do
-      before do 
+      before do
         post '/api/kart/parse-log', params: { kartlog: File.new('bin/input.log') }
       end
 

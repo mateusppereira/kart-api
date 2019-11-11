@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'ParserService' do
-  
   context 'Parsing lines' do
     lines = File.readlines('bin/input.log')
     parsed_lines = ParserService.new(lines).parsed_lines

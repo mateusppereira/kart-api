@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PilotReport
   RACE_LAPS = 4
   attr_reader :cod_pilot, :name_pilot, :number_laps, :race_time, :best_lap, :avg_speed
@@ -12,7 +14,7 @@ class PilotReport
   end
 
   def finished_race?
-    @number_laps == RACE_LAPS ? true : false
+    @number_laps == RACE_LAPS
   end
 
   def to_h
@@ -22,7 +24,7 @@ class PilotReport
       number_laps: @number_laps,
       race_time: @race_time.round(2),
       best_lap: @best_lap.round(2),
-      avg_speed: @avg_speed.round(2),
+      avg_speed: @avg_speed.round(2)
     }
   end
 
