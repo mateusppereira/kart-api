@@ -12,10 +12,6 @@ RSpec.describe 'ParserService' do
       expect(parsed_lines.count).to eq(content_lines.count)
     end
 
-    it 'should return field hora as timestamp' do
-      expect(parsed_lines[0][:timestamp]).to eq('2019-11-10 23:49:08.277000000 -0300')
-    end
-
     it 'should return formatted fields' do
       expect(parsed_lines[0][:cod_pilot]).to eq(38)
       expect(parsed_lines[0][:name_pilot]).to eq('F.MASSA')
