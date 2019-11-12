@@ -3,11 +3,6 @@ stages:
   - test
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - vendor/ruby
-
 .before_script_template: &build
   before_script:
     - gem install bundler
