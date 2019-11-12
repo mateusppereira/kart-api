@@ -29,7 +29,6 @@ rspec:
 
 deploy:
   image: ruby:2.6.2
-  <<: *build
   script:
     # install dpl:
     - apt-get update -qy
