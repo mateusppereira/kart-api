@@ -21,7 +21,6 @@ Bundler.require(*Rails.groups)
 
 module KartApi
   class Application < Rails::Application
-    config.load_defaults 5.2
-    config.assets.initialize_on_precompile = false
+    config.api_only = true
   end
 end
