@@ -14,8 +14,8 @@ class ParserService
     _header, *content_lines = @lines
 
     content_lines.map do |line|
-      pilot_data = pilot_data(line)
-      lap_data = lap_data(line)
+      pilot_data = parse_pilot_data(line)
+      lap_data = parse_lap_data(line)
       {
         timestamp: lap_data[:timestamp],
         number: lap_data[:number],
@@ -29,15 +29,17 @@ class ParserService
 
   private
 
-  def pilot_data(line)
+  def parse_pilot_data(line)
     infos = RGX_PILOT.match(line)
     {
       cod: Integer(Float(infos[1])),
       name: infos[2]
     }
+  rescue
+    raise ArgumentError, '[ERROR] Pilot data mal formed'
   end
 
-  def lap_data(line)
+  def parse_lap_data(line)
     lap_infos = RGX_LINE.match(line)
     {
       timestamp: Time.parse(lap_infos[1]),
@@ -45,5 +47,7 @@ class ParserService
       duration: FormatHelper.duration_to_seconds(lap_infos[3]),
       avg_speed: Float(lap_infos[4].tr(',', '.'))
     }
+  rescue
+    raise ArgumentError, '[ERROR] Lap data mal formed'
   end
 end

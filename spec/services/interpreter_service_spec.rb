@@ -21,12 +21,12 @@ RSpec.describe 'InterpreterService' do
     end
 
     it 'first should have have min race_time' do
-      min_race_time = result[:ordered_pilots].min { |report| report[:race_time] }
+      min_race_time = result[:ordered_pilots].min { |report| FormatHelper.duration_to_seconds(report[:race_time]) }
       expect(result[:ordered_pilots].first).to eq(min_race_time)
     end
 
     it 'last should have have max race_time' do
-      max_race_time = result[:ordered_pilots].max { |report| report[:race_time] }
+      max_race_time = result[:ordered_pilots].max { |report| FormatHelper.duration_to_seconds(report[:race_time]) }
       expect(result[:ordered_pilots].last).to eq(max_race_time)
     end
 

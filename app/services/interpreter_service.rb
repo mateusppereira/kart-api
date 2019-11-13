@@ -14,7 +14,7 @@ class InterpreterService
     winner, *others = ordered_pilots
     {
       best_lap: reports_by_pilot.min_by(&:best_lap).best_lap,
-      ordered_pilots: [winner.to_h] | others_with_distance(winner, others)
+      ordered_pilots: pilots_with_distance(winner, others)
     }
   end
 
@@ -24,12 +24,13 @@ class InterpreterService
     pilot_cods.map { |cod| PilotReport.new(@race_by_pilot[cod]) }
   end
 
-  def others_with_distance(winner, other_pilots)
-    other_pilots.map do |pilot|
+  def pilots_with_distance(winner, other_pilots)
+    others = other_pilots.map do |pilot|
       {
         **pilot.to_h,
         distance_from_winner: pilot.calculate_distance_from_winner(winner)
       }
     end
+    [winner, *others]
   end
 end

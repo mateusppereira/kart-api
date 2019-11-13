@@ -9,7 +9,9 @@ module Api
 
       render json: result
     rescue ActionController::ParameterMissing
-      render json: { message: 'Parâmetros não enviados' }, status: :bad_request
+      render json: { message: 'Arquivo de log não enviados' }, status: :bad_request
+    rescue ArgumentError => exception
+      render json: { message: exception }, status: :bad_request
     end
   end
 end
