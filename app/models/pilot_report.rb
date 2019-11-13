@@ -22,8 +22,8 @@ class PilotReport
       cod_pilot: @cod_pilot,
       name_pilot: @name_pilot,
       number_laps: @number_laps,
-      race_time: @race_time.round(2),
-      best_lap: @best_lap.round(2),
+      race_time: FormatHelper.seconds_to_s(@race_time.round(2)),
+      best_lap: FormatHelper.seconds_to_s(@best_lap.round(2)),
       avg_speed: @avg_speed.round(2)
     }
   end

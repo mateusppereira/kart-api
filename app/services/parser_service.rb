@@ -42,13 +42,8 @@ class ParserService
     {
       timestamp: Time.parse(lap_infos[1]),
       number: Integer(lap_infos[2]),
-      duration: parse_duration(lap_infos[3]),
+      duration: FormatHelper.duration_to_seconds(lap_infos[3]),
       avg_speed: Float(lap_infos[4].tr(',', '.'))
     }
-  end
-
-  def parse_duration(duration)
-    minute, seconds = duration.split(':')
-    (Float(minute) * 60) + Float(seconds)
   end
 end

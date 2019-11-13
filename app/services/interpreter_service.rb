@@ -14,7 +14,7 @@ class InterpreterService
     winner, *others = ordered_pilots
     {
       best_lap: reports_by_pilot.min_by(&:best_lap).best_lap,
-      ordered_pilots: [winner] | others_with_distance(winner, others)
+      ordered_pilots: [winner.to_h] | others_with_distance(winner, others)
     }
   end
 
