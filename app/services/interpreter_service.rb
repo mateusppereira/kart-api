@@ -31,6 +31,6 @@ class InterpreterService
         distance_from_winner: pilot.calculate_distance_from_winner(winner)
       }
     end
-    [winner, *others]
+    [winner.to_h, *others]
   end
 end
