@@ -47,8 +47,8 @@ class ParserService
     }
   end
 
-  def parse_duration(tempo)
-    minute, seconds = tempo.split(':')
+  def parse_duration(duration)
+    minute, seconds = duration.split(':')
     (Float(minute) * 60) + Float(seconds)
   end
 end

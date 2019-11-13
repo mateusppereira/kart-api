@@ -1,17 +1,9 @@
-# frozen_string_literal: true
-
-require_relative '../../services/parser_service'
-
 module Api
   class KartController < ActionController::API
-    def index
-      render json: { message: 'Hello' }
-    end
-
     def parse_log
       params.require(:kartlog)
 
-      lines = File.readlines('bin/input.log')
+      lines = File.readlines(params[:kartlog].path)
       parsed_data = ParserService.new(lines).parsed_lines
       result = InterpreterService.new(parsed_data).perform
 
