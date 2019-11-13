@@ -12,12 +12,15 @@ RUN apk add --no-cache --update build-base \
                                 tzdata
 
 
-ENV APP_PATH /app
-WORKDIR $APP_PATH
+ENV APP_PATH /kart
+WORKDIR ${APP_PATH}
 
 COPY Gemfile* ./
 
 RUN gem install bundler
 RUN bundle install
 
+COPY . ./
+
 EXPOSE 3000
+CMD [ "rails", "s" ]
